@@ -30,14 +30,14 @@ class CartController extends Controller
             'amount' => $request->amount
         ]);
 
-        return Redirect::route('index_product');
+        return Redirect::route('cart');
     }
 
     public function show_cart()
     {
         $user_id = Auth::id();
         $carts = Cart::where('user_id', $user_id)->get();
-        return view('product.show_cart', compact('carts'));
+        return view('product.cart', compact('carts'));
     }
 
     public function update_cart(Cart $cart, Request $request)
@@ -50,7 +50,7 @@ class CartController extends Controller
             'amount' => $request->amount
         ]);
 
-        return Redirect::route('show_cart');
+        return Redirect::route('product.cart');
     }
 
     public function delete_cart(Cart $cart)

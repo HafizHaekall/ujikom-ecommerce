@@ -8,18 +8,18 @@ use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
-    public function index_product()
+    public function index()
     {
         $products = Product::all();
-        return view('product.index_product', compact('products'));
+        return view('home', compact('products'));
     }
 
-    public function create_product()
+    public function create()
     {
-        return view('product.create_product');
+        return view('product.create');
     }
 
-    public function store_product(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -39,20 +39,20 @@ class ProductController extends Controller
             'description' => $request->description,
             'image' => $path
         ]);
-        return Redirect::route('index_product');
+        return Redirect::route('home');
     }
 
-    public function show_product(Product $product)
+    public function show(Product $product)
     {
-        return view('product.show_product', compact('product'));
+        return view('product.show', compact('product'));
     }
 
-    public function edit_product(Product $product)
+    public function edit(Product $product)
     {
-        return view('product.edit_product', compact('product'));
+        return view('product.edit', compact('product'));
     }
 
-    public function update_product(Product $product, Request $request)
+    public function update(Product $product, Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -84,12 +84,12 @@ class ProductController extends Controller
             ]);
         }
 
-        return Redirect::route('show_product', $product);
+        return Redirect::route('product.show', $product);
     }
 
     public function delete_product(Product $product)
     {
         $product->delete();
-        return Redirect::route('index_product');
+        return Redirect::route('home');
     }
 }

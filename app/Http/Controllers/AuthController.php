@@ -39,8 +39,7 @@ class AuthController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
-            // 'role' => ['required', 'string'],
-            'photo' => ['nullable', 'image', 'max:10240'], // Max 10MB
+            'photo' => ['nullable', 'image', 'max:5120'], // Max 5MB
         ]);
 
         if ($request->hasFile('photo')) {
