@@ -54,7 +54,7 @@
                 </div>
                 <ul class="pt-2" aria-labelledby="user-menu-button">
                     <li>
-                        <a href="#" class="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 duration-300"><i data-feather="user" class="h-5 w-4 mr-1"></i>Profile</a>
+                        <a href="{{ route('profile') }}" class="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 duration-300"><i data-feather="user" class="h-5 w-4 mr-1"></i>Profile</a>
                     </li>
                     <li>
                         <a href="{{ route('index_order') }}" class="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 duration-300"><i data-feather="shopping-bag" class="h-5 w-4 mr-1"></i>Pesanan Saya</a>

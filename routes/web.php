@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,3 +63,7 @@ Route::get('/order', [OrderController::class, 'index_order'])->name('index_order
 Route::get('/order/{order}', [OrderController::class, 'show_order'])->name('show_order');
 Route::post('/order/{order}/pay', [OrderController::class, 'submit_payment_receipt'])->name('submit_payment_receipt');
 Route::post('/order/{order}/confirm', [OrderController::class, 'confirm_payment'])->name('confirm_payment');
+
+// Profile
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
