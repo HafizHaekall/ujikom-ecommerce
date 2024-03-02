@@ -22,7 +22,7 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/home');
         }
 
         return back()->withErrors(['email' => 'Invalid credentials']);
@@ -58,6 +58,6 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('home');
     }
 }

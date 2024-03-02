@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Product;
 use App\Models\Cart;
-use Illuminate\Support\Facades\Redirect;
+use App\Models\Order;
+use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
@@ -37,7 +38,14 @@ class CartController extends Controller
     {
         $user_id = Auth::id();
         $carts = Cart::where('user_id', $user_id)->get();
-        return view('product.cart', compact('carts'));
+        $user = Auth::user();
+        $is_admin = $user->is_admin;
+        if ($is_admin) {
+            $orders = Order::all();
+        } else {
+            $orders = Order::where('user_id', $user->id)->get();
+        }
+        return view('product.cart', compact('carts', 'orders'));
     }
 
     public function update_cart(Cart $cart, Request $request)
@@ -50,12 +58,23 @@ class CartController extends Controller
             'amount' => $request->amount
         ]);
 
-        return Redirect::route('product.cart');
+        return Redirect::route('cart');
     }
 
     public function delete_cart(Cart $cart)
     {
         $cart->delete();
         return Redirect::back();
+    }
+
+    public function getCartAmount($cartId)
+    {
+        $cart = Cart::find($cartId);
+
+        if (!$cart) {
+            return response()->json(['error' => 'Cart not found'], 404);
+        }
+
+        return response()->json(['amount' => $cart->amount]);
     }
 }

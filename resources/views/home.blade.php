@@ -15,7 +15,7 @@
                 <p class="text-xs font-normal text-gray-700 dark:text-gray-400">{{ $product->description }}</p>
             </div>
             <div class="flex items-center justify-between px-3 mb-2">
-                <h5 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">Rp{{ $product->price }}</h5>
+                <h5 class="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">Rp. {{ number_format($product->price, 0, ',', '.') }}</h5>
                 <p class="font-normal text-xs text-gray-700 dark:text-gray-400">Tersisa {{ $product->stock }}</p>
             </div>
         </a>

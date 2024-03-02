@@ -17,32 +17,36 @@ class OrderController extends Controller
     {
         $user = Auth::user();
         $is_admin = $user->is_admin;
+    
         if ($is_admin) {
             $orders = Order::all();
         } else {
             $orders = Order::where('user_id', $user->id)->get();
         }
-        return view('order.index_order', compact('orders'));
+    
+        return view('order.index', compact('orders'));
     }
-
+    
     public function show_order(Order $order)
     {
         $user = Auth::user();
         $is_admin = $user->is_admin;
-
+    
         if ($is_admin || $order->user_id == $user->id) {
-            return view('order.show_order', compact('order'));
+            return view('order.index', compact('order'));
         }
-        return view('order.show_order', compact('order'));
-    }
+
+        $order = Order::findOrFail($order);
+        return view('order.show', compact('order'));
+    }    
 
     public function checkout()
     {
         $user_id = Auth::id();
         $carts = Cart::where('user_id', $user_id)->get();
 
-        if ($carts == null) {
-            return Redirect::back();
+        if ($carts->isEmpty()) {
+            return Redirect::back()->with('error', 'Tidak ada item di keranjang.');
         }
 
         $order = Order::create([
@@ -69,6 +73,10 @@ class OrderController extends Controller
 
     public function submit_payment_receipt(Order $order, Request $request)
     {
+        $request->validate([
+            'payment_receipt' => 'required|image|mimes:png,jpg, jpeg|max:10240',
+        ]);
+
         $file = $request->file('payment_receipt');
         $path = time() . '_' . $order->id . '.' . $file->getClientOriginalExtension();
 

@@ -33,7 +33,7 @@
                         Masukkan Keranjang
                     </button>
                 </div>
-            </form>           
+            </form>          
             @if ($errors->any())
             @foreach ($errors->all() as $error)
             <p>{{ $error }}</p>
@@ -42,27 +42,5 @@
         </div>
     </div>
 </section>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const decrementButton = document.getElementById("decrement-button");
-        const incrementButton = document.getElementById("increment-button");
-        const quantityInput = document.getElementById("quantity-input");
-
-        decrementButton.addEventListener("click", function() {
-            let currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
-                quantityInput.value = currentValue - 1;
-            }
-        });
-
-        incrementButton.addEventListener("click", function() {
-            let currentValue = parseInt(quantityInput.value);
-            if (currentValue < parseInt(quantityInput.getAttribute("data-input-counter-max"))) {
-                quantityInput.value = currentValue + 1;
-            }
-        });
-    });
-</script>
 
 @endsection

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -34,7 +35,8 @@ Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('
 Route::post('/register', [AuthController::class, 'register']);
 
 // Logout
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout']);
 
 // Home Product
 Route::get('/home', [ProductController::class, 'index'])->name('home');
@@ -49,3 +51,14 @@ Route::patch('/product/{product}/update', [ProductController::class, 'update_pro
 Route::post('/cart/{product}', [CartController::class, 'add_to_cart'])->name('add_to_cart');
 Route::get('/cart', [CartController::class, 'show_cart'])->name('cart');
 Route::patch('/cart/{cart}', [CartController::class, 'update_cart'])->name('update_cart');
+Route::delete('/cart/{cart}', [CartController::class, 'delete_cart'])->name('delete_cart');
+Route::get('/get-cart-amount/{cartId}', [CartController::class, 'getCartAmount']);
+
+// Checkout
+Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+
+// Order
+Route::get('/order', [OrderController::class, 'index_order'])->name('index_order');
+Route::get('/order/{order}', [OrderController::class, 'show_order'])->name('show_order');
+Route::post('/order/{order}/pay', [OrderController::class, 'submit_payment_receipt'])->name('submit_payment_receipt');
+Route::post('/order/{order}/confirm', [OrderController::class, 'confirm_payment'])->name('confirm_payment');
