@@ -14,9 +14,9 @@ class ProductController extends Controller
         $products = [];
         if (request('query') && request('query') !== null) {
             $query = request('query');
-            $products = Product::where('name', 'like', '%'.$query.'%')->orWhere('price', 'like', '%'.$query.'%')->orWhere('description', 'like', '%'.$query.'%')->paginate(8);
+            $products = Product::where('name', 'like', '%'.$query.'%')->orWhere('price', 'like', '%'.$query.'%')->orWhere('description', 'like', '%'.$query.'%')->get();
         } else {
-            $products = Product::paginate(8);
+            $products = Product::all();
         }
 
         if (Auth::check() && Auth::user()->is_admin) {

@@ -40,7 +40,7 @@
                     $total_payment += $total_price;
                 @endphp
                 <tr class="border-b">
-                    <td class="flex gap-6 px-4 py-3 max-w-[20rem]">
+                    <td class="flex items-center gap-6 px-4 py-3 max-w-[20rem]">
                         <img src="{{ url('/storage/' . $cart->product->image) }}" class="w-16 h-16 object-cover rounded">
                         <span class="text-lg truncate">{{ $cart->product->name }}</span>
                     </td>
@@ -154,7 +154,6 @@
                     </div>
                 </div>
             </div>
-            
             @endforeach
         </tbody>
     </table>
@@ -176,6 +175,15 @@
     </div>
 </nav>
 </section>
+
+@if ($carts->isEmpty())
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-16 lg:px-12">
+        <p data-feather="alert-circle" class="h-16 w-16 mb-5 mx-auto"></p>
+        <h1 class="mb-4 text-2xl font-semibold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl dark:text-white">Keranjangmu kosong</h1>
+    </div>
+</section>
+@endif
 
 <script>
         document.addEventListener("DOMContentLoaded", function() {

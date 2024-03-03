@@ -8,10 +8,10 @@
         <img class="w-80 h-80 block rounded-xl" src="{{ url('storage/' . $product->image) }}" alt="dashboard image">
         <div class="mt-4 md:mt-0">
             <p class="font-bold text-gray-900 md:text-2xl dark:text-gray-400">{{ $product->name }}</p>
-            <p class="mb-4 font-medium text-gray-900 dark:text-gray-400">{{ $product->description }}</p>
+            <p class="mb-4 font-light text-gray-900 dark:text-gray-400">{{ $product->description }}</p>
             <h2 class="mb-10 text-3xl tracking-tight font-extrabold text-gray-900 dark:text-white">Rp. {{ number_format($product->price, 0, ',', '.') }}</h2>
 
-            <form action="{{ route('add_to_cart', $product) }}" method="post" class="mb-4 max-w-xs mx-auto">
+            <form action="{{ route('add_to_cart', $product) }}" method="post" class="mb-4 max-w-xs">
                 @csrf
                 <label for="quantity-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Total Stok:</label>
                 <div class="relative flex items-center max-w-[8rem]">
@@ -35,9 +35,9 @@
                 </div>
             </form>          
             @if ($errors->any())
-            @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
-            @endforeach
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
             @endif
         </div>
     </div>
