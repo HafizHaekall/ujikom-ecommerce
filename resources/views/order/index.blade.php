@@ -47,7 +47,7 @@
                         </span>
                         @endif
                     </td>
-                    <td class="px-4 py-3 max-w-[10rem]">
+                    <td class="px-4 py-3 max-w-[12rem]">
                         @if ($order->is_paid == false && $order->payment_receipt == null && !Auth::user()->is_admin)
                         <form action="{{ route('submit_payment_receipt', $order) }}" method="post" enctype="multipart/form-data">
                             @csrf
@@ -61,7 +61,8 @@
                             <a href="{{ url('storage/' . $order->payment_receipt) }}" target="blank" class="w-full py-2 px-3 flex justify-center items-center text-sm font-medium text-center text-white bg-primary-20 border-[1.5px] border-primary-20 rounded-lg hover:text-primary-20 hover:bg-transparent duration-300">
                                 Lihat bukti pembayaran
                             </a>
-                        @else
+                        @endif
+                        @if (Auth::user()->is_admin == true && $order->payment_receipt == null)
                             <p>Belum ada</p>
                         @endif
                     </td>
@@ -70,12 +71,13 @@
                             <button type="button" data-modal-target="default-modal" data-modal-toggle="default-modal" class="py-2 px-3 flex items-center text-sm font-medium text-center text-primary-20 bg-transparent border-[1.5px] border-primary-20 rounded-lg hover:text-white hover:bg-primary-20 duration-300">
                                 <i data-feather="eye" class="h-5 w-4"></i>
                             </button>
-                            @if (Auth::user()->is_admin)
-                            @if (!$order->payment_receipt)
-                            <button type="button" data-modal-target="confirm-modal" data-modal-toggle="confirm-modal" class="flex items-center bg-primary-20 text-white hover:text-primary-20 border-[1.5px] border-primary-20 hover:bg-transparent  font-medium rounded-lg text-sm px-3 py-2 text-center duration-300">
+                            @if (Auth::user()->is_admin && $order->payment_receipt)
+                            <a href="{{ route('nota', $order->id) }}" target="blank" class="flex items-center bg-primary-20 text-white hover:text-primary-20 border-[1.5px] border-primary-20 hover:bg-transparent  font-medium rounded-lg text-sm px-3 py-2 text-center duration-300">
+                                <i data-feather="printer" class="h-5 w-4"></i>
+                            </a>
+                            <button type="button" data-modal-target="confirm-modal" data-modal-toggle="confirm-modal" class="flex items-center bg-green-500 text-white hover:text-green-500 border-[1.5px] border-green-500 hover:bg-transparent font-medium rounded-lg text-sm px-3 py-2 text-center duration-300">
                                 <i data-feather="check-square" class="h-5 w-4"></i>
                             </button>
-                            @endif
                             @endif
                         </div>
                     </td>

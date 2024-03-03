@@ -68,7 +68,7 @@ class OrderController extends Controller
             $cart->delete();
         }
 
-        return Redirect::back();
+        return Redirect::route('index_order');
     }
 
     public function submit_payment_receipt(Order $order, Request $request)
@@ -96,5 +96,10 @@ class OrderController extends Controller
         ]);
 
         return Redirect::back();
+    }
+
+    public function nota(Order $order)
+    {
+        return view('order.nota', compact('order'));
     }
 }

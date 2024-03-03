@@ -65,5 +65,9 @@ Route::post('/order/{order}/pay', [OrderController::class, 'submit_payment_recei
 Route::post('/order/{order}/confirm', [OrderController::class, 'confirm_payment'])->name('confirm_payment');
 
 // Profile
-Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+// Nota Transaksi
+Route::get('/order/nota/{order}', [OrderController::class, 'nota'])->name('nota');
+// Route::get('/order/nota/{id}', [OrderController::class, 'NotaOrder'])->name('order.nota');

@@ -4,7 +4,7 @@
         <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">E-COMMERCE</span>
     </a>
-    <div class="flex md:order-1">
+    <div class="flex items-center md:order-1">
         <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" class="lg:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 me-1">
             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
@@ -13,7 +13,7 @@
         </button>
         <div class="relative hidden md:block">
             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <i class="w-5 h-5 text-gray-500 mb-2" data-feather="search"></i>
+                <i class="w-5 h-5 text-gray-500" data-feather="search"></i>
             <span class="sr-only">Search icon</span>
             </div>
             <input type="text" id="search-navbar" class="block w-[50vw] p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Produk...">
@@ -54,7 +54,7 @@
                 </div>
                 <ul class="pt-2" aria-labelledby="user-menu-button">
                     <li>
-                        <a href="{{ route('profile') }}" class="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 duration-300"><i data-feather="user" class="h-5 w-4 mr-1"></i>Profile</a>
+                        <a href="{{ route('profile.edit') }}" class="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 duration-300"><i data-feather="user" class="h-5 w-4 mr-1"></i>Profile</a>
                     </li>
                     <li>
                         <a href="{{ route('index_order') }}" class="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 duration-300"><i data-feather="shopping-bag" class="h-5 w-4 mr-1"></i>Pesanan Saya</a>
@@ -103,7 +103,7 @@ class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 
                         Tidak
                     </button>
                     <button type="submit"
-                        class="w-20 py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-800 duration-[400ms]">
+                        class="w-20 py-2 px-3 text-sm font-medium text-center text-white bg-primary-20 rounded-lg duration-[400ms]">
                         Ya
                     </button>
                 </a>
