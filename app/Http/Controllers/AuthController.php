@@ -22,8 +22,15 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/home');
-        }
+            // Cek role
+            $user = Auth::user();
+        
+            if ($user->is_admin == true) {
+                return redirect()->intended('dashboard');
+            } else {
+                return redirect()->intended('home');
+            }
+        }        
 
         return back()->withErrors(['email' => 'Invalid credentials']);
     }

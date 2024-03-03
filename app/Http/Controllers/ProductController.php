@@ -26,10 +26,24 @@ class ProductController extends Controller
         return view('home', compact('products'));
     }
 
+    // public function product()
+    // {
+    //     if (Auth::check() && Auth::user()->is_admin) {
+    //         $products = Product::all();
+    //         return view('product', [
+    //             'active' => 'product',
+    //         ], compact('products'));
+    //     }
+    // }
+
     public function create()
     {
-        return view('product.create');
+        $active = 'product';
+        $products = Product::all();
+    
+        return view('product.create', compact('active', 'products'));
     }
+    
 
     public function store(Request $request)
     {

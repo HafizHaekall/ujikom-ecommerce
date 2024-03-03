@@ -13,17 +13,11 @@
     @vite(['resources/js/app.js'])
 </head>
 <body>
-  @if (Auth::check() && Auth::user()->is_admin == true)
     @include('partials.sidebar')
-      <div class="p-4 lg:py-8 lg:px-12 lg:ml-[250px]">
-        @yield('container')
-      </div>
-  @elseif (!request()->is('login') && !request()->is('register'))
-    @include('partials.navbar')
-      <div class="p-4 lg:py-8 lg:px-12">
-        @yield('container')
-      </div>
-  @endif
+
+    <div class="p-4 lg:py-8 lg:px-12 lg:ml-[250px]">
+      @yield('container')
+    </div>
 
     {{-- feather icons --}}
     <script>

@@ -24,7 +24,9 @@ class OrderController extends Controller
             $orders = Order::where('user_id', $user->id)->get();
         }
     
-        return view('order.index', compact('orders'));
+        return view('order.index', [
+            'active' => 'order',
+        ], compact('orders'));
     }
     
     public function show_order(Order $order)
@@ -33,7 +35,9 @@ class OrderController extends Controller
         $is_admin = $user->is_admin;
     
         if ($is_admin || $order->user_id == $user->id) {
-            return view('order.show', compact('order'));
+            return view('order.show', [
+                'active' => 'order',
+            ], compact('order'));
         }
 
         $order = Order::findOrFail($order->id);

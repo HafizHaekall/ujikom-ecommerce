@@ -24,7 +24,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dashboard.index', [
+        "active" => "dashboard",
+        ]);
 })->middleware('admin')->name('dashboard');
 
 // Login
@@ -41,10 +43,11 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 // Home Product
 Route::get('/home', [ProductController::class, 'index'])->name('home');
+// Route::get('/product/admin', [ProductController::class, 'product'])->name('product');
 
 // Create Product
 Route::get('/product/create', [ProductController::class, 'create'])->name('create_product');
-Route::post('/product/create', [ProductController::class, 'store'])->name('store_product');
+Route::post('/product', [ProductController::class, 'store'])->name('store_product');
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('show_product');
 Route::patch('/product/{product}/update', [ProductController::class, 'update_product'])->name('update_product');
 
@@ -66,6 +69,7 @@ Route::patch('/order/{order}/confirm', [OrderController::class, 'confirm_payment
 
 // Profile
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::get('/dashboard/profile', [ProfileController::class, 'admin'])->name('profile.admin');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 // Nota Transaksi

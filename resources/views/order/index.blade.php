@@ -76,7 +76,17 @@
                 </tr>
             @endforeach
         </tbody>
+    </table>
 </div>
+
+@if ($orders->isEmpty())
+<section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-16 lg:px-12">
+        <p data-feather="alert-circle" class="h-16 w-16 mb-5 mx-auto"></p>
+        <h1 class="mb-4 text-2xl font-semibold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl dark:text-white">Tidak ada pesanan</h1>
+    </div>
+</section>
+@endif
 
 <!-- Confirm modal -->
 <div id="confirm-modal" tabindex="-1" aria-hidden="true"

@@ -18,6 +18,13 @@ class ProfileController extends Controller
         return view('profile.edit');
     }
 
+    public function admin()
+    {
+        return view('profile.admin', [
+            'active' => 'profile',
+        ]);
+    }
+
     public function update(Request $request)
     {
         $user = Auth::user();

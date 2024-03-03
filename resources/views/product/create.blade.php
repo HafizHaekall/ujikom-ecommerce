@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Create')
+@section('title', 'Tambah')
 @section('container')
 
         <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
@@ -10,6 +10,52 @@
             <i data-feather="plus" class="w-5 mr-1"></i>
             <span>Tambah Produk</span>
         </button>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left text-neutral-60">
+                <thead class="text-sm text-neutral-60 uppercase bg-neutral-10">
+                    <tr>
+                        <th scope="col" class="px-4 py-4">Gambar</th>
+                        <th scope="col" class="px-4 py-3">Nama Produk</th>
+                        <th scope="col" class="px-4 py-3">Deskripsi</th>
+                        <th scope="col" class="px-4 py-3">Harga</th>
+                        <th scope="col" class="px-4 py-3">Stok</th>
+                        <th scope="col" class="px-4 py-3">Aksi</th>
+                        <th scope="col" class="px-4 py-3">
+                            <span class="sr-only">Actions</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($products as $product)
+                        <tr class="border-b">
+                            <td class="px-4 py-3 max-w-[5rem]"><img src="{{ url('storage/' . $product->image) }}" alt=""></td>
+                            <td class="px-4 py-3 max-w-[10rem]">{{ $product->name }}</td>
+                            <td class="px-4 py-3 max-w-[15rem] truncate">{{ $product->description }}</td>
+                            <td class="px-4 py-3 max-w-[10rem]">Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
+                            <td class="px-4 py-3 max-w-[5rem]">{{ $product->stock }}</td>
+                            <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{-- <div class="flex items-center space-x-2">
+                                    <a href="{{ route('show_order', $product) }}" data-modal-target="default-modal" data-modal-toggle="default-modal" class="py-2 px-3 flex items-center text-sm font-medium text-center text-primary-20 bg-transparent border-[1.5px] border-primary-20 rounded-lg hover:text-white hover:bg-primary-20 duration-300">
+                                        <i data-feather="eye" class="h-5 w-4"></i>
+                                    </a>
+                                    @if (Auth::user()->is_admin == true && $product->is_paid == true)
+                                    <a href="{{ route('nota', $product->id) }}" target="blank" class="flex items-center bg-primary-20 text-white hover:text-primary-20 border-[1.5px] border-primary-20 hover:bg-transparent  font-medium rounded-lg text-sm px-3 py-2 text-center duration-300">
+                                        <i data-feather="printer" class="h-5 w-4"></i>
+                                    </a>
+                                    @endif
+                                    @if (Auth::user()->is_admin == true && $product->is_paid == false)
+                                    <button type="button" onclick="confirmOrder('{{ route('confirm_payment', $product->id) }}')" data-modal-target="confirm-modal" data-modal-toggle="confirm-modal" class="flex items-center bg-green-500 text-white hover:text-green-500 border-[1.5px] border-green-500 hover:bg-transparent font-medium rounded-lg text-sm px-3 py-2 text-center duration-300">
+                                        <i data-feather="check-square" class="h-5 w-4"></i>
+                                    </button>
+                                    @endif
+                                </div>
+                            </td> --}}
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
 
         <!-- Create modal -->
