@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
@@ -10,7 +11,18 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = [];
+        if (request('query') && request('query') !== null) {
+            $query = request('query');
+            $products = Product::where('name', 'like', '%'.$query.'%')->orWhere('price', 'like', '%'.$query.'%')->orWhere('description', 'like', '%'.$query.'%')->paginate(8);
+        } else {
+            $products = Product::paginate(8);
+        }
+
+        if (Auth::check() && Auth::user()->is_admin) {
+            return view('home', compact('products'));
+        }
+
         return view('home', compact('products'));
     }
 

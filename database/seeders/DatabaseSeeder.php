@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert([
             'id' => 1,
-            'photo' => 'img/hafiz.jpg',
+            'photo' => 'user/hafiz.jpg',
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin123'),
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert([
             'id' => 2,
-            'photo' => 'img/rpl.png',
+            'photo' => 'user/rpl.png',
             'name' => 'User',
             'email' => 'user@gmail.com',
             'password' => Hash::make('user1234'),

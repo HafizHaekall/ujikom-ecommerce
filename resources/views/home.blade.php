@@ -4,6 +4,14 @@
 @section('container')
 
 <div class="flex flex-wrap gap-8 justify-center">
+    @if ($products->IsEmpty())
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-16 lg:px-12">
+            <p data-feather="slash" class="h-16 w-16 mb-5 mx-auto"></p>
+            <h1 class="mb-4 text-2xl font-semibold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl dark:text-white">Produk tidak tersedia</h1>
+        </div>
+    </section>
+    @endif
     @foreach ($products as $product)
     <div class="max-w-sm lg:w-[250px] bg-white border border-gray-200 rounded-lg shadow hover:border-[1.5px] hover:border-primary-20 hover:-translate-y-1">
         <a href="{{ route('show_product', $product) }}">

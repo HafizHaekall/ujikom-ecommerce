@@ -33,12 +33,12 @@ class OrderController extends Controller
         $is_admin = $user->is_admin;
     
         if ($is_admin || $order->user_id == $user->id) {
-            return view('order.index', compact('order'));
+            return view('order.show', compact('order'));
         }
 
-        $order = Order::findOrFail($order);
+        $order = Order::findOrFail($order->id);
         return view('order.show', compact('order'));
-    }    
+    }
 
     public function checkout()
     {

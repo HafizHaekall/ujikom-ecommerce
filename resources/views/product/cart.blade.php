@@ -87,7 +87,7 @@
                             <i data-feather="x"></i>
                             <span class="sr-only">Close modal</span>
                         </button>
-                        <div class="flex justify-center">
+                        <div class="flex flex-col items-center justify-center">
                             {{-- Tambah id disini + action kosongin dulu ja --}}
                             <form method="post" id="update-cart" class="mb-4 max-w-xs mx-auto">
                                 @method('patch')
