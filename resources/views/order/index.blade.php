@@ -26,12 +26,12 @@
                     <td class="px-4 py-3 max-w-[10rem]">{{ $order->created_at }}</td>
                     <td class="px-4 py-3 max-w-[5rem]">
                         @if ($order->is_paid == true)
-                        <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                        <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
                             <span class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
                             Paid
                         </span>
                         @else
-                        <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                        <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
                             <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
                             Unpaid
                         </span>
@@ -56,7 +56,7 @@
                             <p>Belum ada</p>
                         @endif
                     </td>
-                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">
                         <div class="flex items-center space-x-2">
                             <a href="{{ route('show_order', $order) }}" class="py-2 px-3 flex items-center text-sm font-medium text-center text-primary-20 bg-transparent border-[1.5px] border-primary-20 rounded-lg hover:text-white hover:bg-primary-20 duration-300">
                                 <i data-feather="eye" class="h-5 w-4"></i>
@@ -80,10 +80,10 @@
 </div>
 
 @if ($orders->isEmpty())
-<section class="bg-white dark:bg-gray-900">
+<section class="bg-white">
     <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-16 lg:px-12">
         <p data-feather="alert-circle" class="h-16 w-16 mb-5 mx-auto"></p>
-        <h1 class="mb-4 text-2xl font-semibold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl dark:text-white">Tidak ada pesanan</h1>
+        <h1 class="mb-4 text-2xl font-semibold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl">Tidak ada pesanan</h1>
     </div>
 </section>
 @endif

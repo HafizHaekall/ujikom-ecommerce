@@ -58,7 +58,7 @@
                         @endif
                         Rp. {{ number_format($total_price, 0, ',', '.') }}
                     </td>
-                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">
                         <div class="flex items-center space-x-2">
                             <button type="button" onclick="updateAmount({{ $cart->amount }}, '{{ route('update_cart', $cart) }}')" data-modal-target="update-modal" data-modal-toggle="update-modal" class="py-2 px-3 flex items-center text-sm font-medium text-center text-white bg-primary-20 border-[1.5px] border-primary-20 rounded-lg hover:text-primary-20 hover:bg-transparent duration-300">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-4" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -92,16 +92,16 @@
                             <form method="post" id="update-cart" class="mb-4 max-w-xs mx-auto">
                                 @method('patch')
                                 @csrf
-                                <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ubah Stok</label>
+                                <label for="amount" class="block mb-2 text-sm font-medium text-gray-900">Ubah Stok</label>
                                 <div class="relative flex items-center max-w-[8rem]">
-                                    <button type="button" id="decrement-button" class="bg-gray-100 border border-gray-300 rounded-l-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                                        <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                                    <button type="button" id="decrement-button" class="bg-gray-100 border border-gray-300 rounded-l-lg p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+                                        <svg class="w-3 h-3 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
                                         </svg>
                                     </button>
                                     <input type="text" id="amount" name="amount" data-input-counter-min="1" data-input-counter-max="50" aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5" required />
-                                    <button type="button" id="increment-button" class="bg-gray-100 border border-gray-300 rounded-r-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                                        <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                    <button type="button" id="increment-button" class="bg-gray-100 border border-gray-300 rounded-r-lg p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none">
+                                        <svg class="w-3 h-3 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
                                         </svg>
                                     </button>
@@ -164,7 +164,7 @@
     <div class="max-w-screen-xl flex flex-wrap items-center justify-end gap-12 mx-auto p-4">
     <h4 class="text-xl font-semibold">Total Harga : Rp. {{ number_format($total_payment, 0, ',', '.') }}</h4>
         <div class="items-center justify-between hidden w-full lg:flex md:w-auto md:order-1" id="navbar-search">
-            <div class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-4 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <div class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-4 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
                 <form action="{{ route('checkout') }}" method="post">
                     @csrf
                     <button type="submit" class="text-white w-48 bg-primary-20 hover:text-primary-20 border-[1.5px] border-primary-20 hover:bg-transparent hover:border-[1.5px] hover:border-primary-20 duration-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
@@ -177,10 +177,10 @@
 </section>
 
 @if ($carts->isEmpty())
-<section class="bg-white dark:bg-gray-900">
+<section class="bg-white">
     <div class="py-8 px-4 mx-auto max-w-screen-md text-center lg:py-16 lg:px-12">
         <p data-feather="alert-circle" class="h-16 w-16 mb-5 mx-auto"></p>
-        <h1 class="mb-4 text-2xl font-semibold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl dark:text-white">Keranjangmu kosong</h1>
+        <h1 class="mb-4 text-2xl font-semibold tracking-tight leading-none text-gray-900 lg:mb-6 md:text-4xl">Keranjangmu kosong</h1>
     </div>
 </section>
 @endif

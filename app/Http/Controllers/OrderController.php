@@ -90,7 +90,7 @@ class OrderController extends Controller
             'payment_receipt' => $path
         ]);
 
-        return Redirect::back()->with(['success' =>'Bukti pembayaran diunggah']);
+        return Redirect::back()->with(['success' =>'Berhasil diunggah']);
     }
 
     public function confirm_payment(Order $order)

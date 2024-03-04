@@ -4,10 +4,10 @@
 @section('container')
 
 <div class="mx-auto @if(Auth::user()->is_admin == true) w-[70%] @endif w-[50%] relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase">
             <tr>
-                <th scope="col" class="px-6 py-3 bg-gray-200 text-base dark:bg-gray-800">
+                <th scope="col" class="px-6 py-3 bg-gray-200 text-base">
                     <a href="{{ route('index_order') }}" class="w-28 py-2 px-3 flex justify-center items-center text-sm font-medium text-center text-white bg-primary-20 border-[1.5px] border-primary-20 rounded-lg hover:text-primary-20 hover:bg-transparent duration-300">
                         <span class="flex items-center justify-center"><i data-feather="rotate-ccw" class="w-4 h-5 mr-1"></i>Kembali</span>
                     </a>
@@ -16,16 +16,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="border-b border-gray-200 dark:border-gray-700">
-                <th scope="row" class="w-[50%] px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+            <tr class="border-b border-gray-200">
+                <th scope="row" class="w-[50%] px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
                     Order ID
                 </th>
                 <td class="px-6 py-4">
                     {{ $order->id }}
                 </td>
             </tr>
-            <tr class="border-b border-gray-200 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+            <tr class="border-b border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
                     Nama Pemesan
                 </th>
                 <td class="px-6 py-4">
@@ -35,8 +35,8 @@
             @php
                 $total_price = 0;
             @endphp
-            <tr class="border-b border-gray-200 dark:border-gray-700">
-                <th scope="row" class="px-6 py-1 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+            <tr class="border-b border-gray-200">
+                <th scope="row" class="px-6 py-1 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
                     Pesanan
                 </th>
                 @foreach ($order->transactions as $transaction)
@@ -48,7 +48,7 @@
                 </td>
             @endforeach
             </tr>
-            <tr class="border-b border-gray-200 dark:border-gray-700">
+            <tr class="border-b border-gray-200">
                 @if ($total_price >= 500000)
                     @php
                         $discount = 0.2 * $total_price;
@@ -68,57 +68,57 @@
                 @php
                     $total_payment = $total_price - $discount;
                 @endphp
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
                     Waktu
                 </th>
                 <td class="px-6 py-4">
                     {{ $order->created_at }}
                 </td>
             </tr>
-            <tr class="border-b border-gray-200 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+            <tr class="border-b border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
                     Total Harga
                 </th>
                 <td class="px-6 py-4">
                     Rp. {{ number_format($total_price, 0, ',', '.') }}
                 </td>
             </tr>
-            <tr class="border-b border-gray-200 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+            <tr class="border-b border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
                     Diskon
                 </th>
                 <td class="px-6 py-4">
                     {{ $disc }}
                 </td>
             </tr>
-            <tr class="border-b border-gray-200 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+            <tr class="border-b border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
                     Total Bayar
                 </th>
                 <td class="px-6 py-4">
                     Rp. {{ number_format($total_payment, 0, ',', '.') }}
                 </td>
             </tr>
-            <tr class="border-b border-gray-200 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+            <tr class="border-b border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
                     Status
                 </th>
                 <td class="px-6 py-4">
                     @if ($order->is_paid == true)
-                    <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
+                    <span class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
                         <span class="w-2 h-2 me-1 bg-green-500 rounded-full"></span>
                         Paid
                     </span>
                     @else
-                    <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                    <span class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
                         <span class="w-2 h-2 me-1 bg-red-500 rounded-full"></span>
                         Unpaid
                     </span>
                     @endif
                 </td>
             </tr>
-            <tr class="border-b border-gray-200 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+            <tr class="border-b border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50">
                     Bukti Pembayaran
                 </th>
                 <td class="px-6 py-4">
