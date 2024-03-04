@@ -10,8 +10,8 @@
     <div class="overflow-y-auto py-5 px-3">
       <div class="flex flex-col justify-between items-start">
         <div class="flex items-center p-2 pb-0 mb-6">
-            <a href="/">
-                {{-- <img src="{{ asset('img/logo-eo.svg') }}" class="h-12 text-white" alt="E-COMMERCE Logo" /> --}}
+            <a href="/" class="flex items-center gap-2">
+                <img src="{{ asset('img/logo.png') }}" class="h-8 text-white" alt="E-COMMERCE Logo" />
                 <h1 class="text-white text-2xl font-bold">GRIDMERCE</h1>
             </a>
           </div>

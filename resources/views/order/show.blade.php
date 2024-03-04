@@ -127,7 +127,7 @@
                             Lihat bukti pembayaran
                         </a>
                     @endif
-                    @if (Auth::user()->is_admin == true && $order->payment_receipt == null)
+                    @if ($order->payment_receipt == null)
                         <p>Belum ada</p>
                     @endif
                 </td>

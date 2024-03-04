@@ -58,7 +58,7 @@
                     </td>
                     <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         <div class="flex items-center space-x-2">
-                            <a href="{{ route('show_order', $order) }}" data-modal-target="default-modal" data-modal-toggle="default-modal" class="py-2 px-3 flex items-center text-sm font-medium text-center text-primary-20 bg-transparent border-[1.5px] border-primary-20 rounded-lg hover:text-white hover:bg-primary-20 duration-300">
+                            <a href="{{ route('show_order', $order) }}" class="py-2 px-3 flex items-center text-sm font-medium text-center text-primary-20 bg-transparent border-[1.5px] border-primary-20 rounded-lg hover:text-white hover:bg-primary-20 duration-300">
                                 <i data-feather="eye" class="h-5 w-4"></i>
                             </a>
                             @if (Auth::user()->is_admin == true && $order->is_paid == true)

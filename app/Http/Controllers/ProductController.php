@@ -65,7 +65,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'image' => $path
         ]);
-        return Redirect::route('home');
+        return Redirect::route('create_product');
     }
 
     public function show(Product $product)
@@ -75,7 +75,9 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        return view('product.edit', compact('product'));
+        return view('product.edit', [
+            "active" => "product",
+        ], compact('product'));
     }
 
     public function update(Product $product, Request $request)
@@ -110,12 +112,12 @@ class ProductController extends Controller
             ]);
         }
 
-        return Redirect::route('product.show', $product);
+        return Redirect::route('create_product', $product);
     }
 
     public function delete_product(Product $product)
     {
         $product->delete();
-        return Redirect::route('home');
+        return Redirect::route('create_product');
     }
 }

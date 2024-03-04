@@ -13,15 +13,15 @@
 
 <section class="bg-gray-50 dark:bg-gray-900">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        {{-- <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-            <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
-            E-COMMERCE
-        </a> --}}
+        <a href="#" class="flex items-center mb-6 text-3xl font-bold text-gray-900 dark:text-white">
+            <img class="h-10 mr-2" src="{{ asset('img/logo.png') }}" alt="logo">
+            GRIDMERCE
+        </a>
         <div class="flex items-center gap-8">
             <div>
                 <img src="{{ asset('img/register.png') }}" alt="" class="w-[45vw]">
                 <h1 class="text-center text-xl font-semibold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                    Beli Barang Ori Hanya Disini
+                    Beli Barang Ori Hanya Di GRIDMERCE
                 </h1>
                 <p class="text-center text-sm">Gabung dan jadikan hidupmu bermakna</p>
             </div>
