@@ -212,4 +212,13 @@
     }
 </script>
 
+<script>
+    //message with toastr
+    @if(session()->has('success'))
+        toastr.success('{{ session('success') }}');
+    @elseif(session()->has('error'))
+        toastr.error('{{ session('error') }}');
+    @endif
+</script>
+
 @endsection

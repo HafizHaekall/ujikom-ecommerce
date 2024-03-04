@@ -65,7 +65,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'image' => $path
         ]);
-        return Redirect::route('create_product');
+        return Redirect::route('create_product')->with(['success' =>'Produk ditambahkan!']);
     }
 
     public function show(Product $product)
@@ -112,12 +112,12 @@ class ProductController extends Controller
             ]);
         }
 
-        return Redirect::route('create_product', $product);
+        return Redirect::route('create_product', $product)->with(['success' =>'Produk berhasil diubah!']);
     }
 
     public function delete_product(Product $product)
     {
         $product->delete();
-        return Redirect::route('create_product');
+        return Redirect::route('create_product')->with(['success' =>'Produk berhasil dihapus!']);
     }
 }

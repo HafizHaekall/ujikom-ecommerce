@@ -31,7 +31,7 @@ class CartController extends Controller
             'amount' => $request->amount
         ]);
 
-        return Redirect::route('cart');
+        return Redirect::route('cart')->with(['success' =>'Ditambahkan ke keranjang']);
     }
 
     public function show_cart()
@@ -58,13 +58,13 @@ class CartController extends Controller
             'amount' => $request->amount
         ]);
 
-        return Redirect::route('cart');
+        return Redirect::route('cart')->with(['success' =>'Jumlah berhasil diubah']);
     }
 
     public function delete_cart(Cart $cart)
     {
         $cart->delete();
-        return Redirect::back();
+        return Redirect::back()->with(['success' =>'Dihapus dari keranjang']);
     }
 
     public function getCartAmount($cartId)

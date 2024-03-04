@@ -1,4 +1,4 @@
-@extends('layouts.dashboardmain')
+@extends('layouts.main')
 
 @section('title', 'Profil')
 @section('container')
@@ -50,6 +50,11 @@
                                 <div>
                                     <label for="current_password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kata sandi lama</label>
                                     <input type="password" name="current_password" id="current_password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-20 focus:border-primary-20 block w-full p-2.5" placeholder="">
+                                    @error('current_password')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div>
                                     <label for="new_password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kata sandi baru</label>
@@ -72,5 +77,14 @@
         </form>
     </div>
 </section>
+
+<script>
+    //message with toastr
+    @if(session()->has('success'))
+        toastr.success('{{ session('success') }}');
+    @elseif(session()->has('error'))
+        toastr.error('{{ session('error') }}');
+    @endif
+</script>
 
 @endsection

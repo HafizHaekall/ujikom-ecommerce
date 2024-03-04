@@ -72,7 +72,7 @@ class OrderController extends Controller
             $cart->delete();
         }
 
-        return Redirect::route('index_order');
+        return Redirect::route('index_order')->with(['success' =>'Checkout berhasil!']);
     }
 
     public function submit_payment_receipt(Order $order, Request $request)
@@ -90,7 +90,7 @@ class OrderController extends Controller
             'payment_receipt' => $path
         ]);
 
-        return Redirect::back();
+        return Redirect::back()->with(['success' =>'Bukti pembayaran diunggah']);
     }
 
     public function confirm_payment(Order $order)
@@ -99,7 +99,7 @@ class OrderController extends Controller
             'is_paid' => true
         ]);
 
-        return Redirect::back();
+        return Redirect::back()->with(['success' =>'Pesanan dikonfirmasi!']);
     }
 
     public function nota(Order $order)

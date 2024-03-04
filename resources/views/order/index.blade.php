@@ -126,4 +126,13 @@ class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 
     }
 </script>
 
+<script>
+    //message with toastr
+    @if(session()->has('success'))
+        toastr.success('{{ session('success') }}');
+    @elseif(session()->has('error'))
+        toastr.error('{{ session('error') }}');
+    @endif
+</script>
+
 @endsection

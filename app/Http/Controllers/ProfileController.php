@@ -31,7 +31,7 @@ class ProfileController extends Controller
 
         // Validasi request
         $request->validate([
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Max 2MB
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:5120', // Max 5MB
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'address' => 'nullable|string|max:255',
@@ -60,7 +60,7 @@ class ProfileController extends Controller
         if ($request->filled('new_password')) {
             // Validasi password lama
             if (!Hash::check($request->current_password, $user->password)) {
-                return redirect()->back()->with('error', 'Password lama salah.');
+                return redirect()->back()->with('error', 'Password lama salah!');
             }
 
             // Update password
@@ -68,6 +68,6 @@ class ProfileController extends Controller
         }
         $user->save();
 
-        return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
+        return redirect()->back()->with('success', 'Profil berhasil diperbarui!');
     }
 }

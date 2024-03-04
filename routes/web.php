@@ -24,12 +24,15 @@ Route::get('/', function () {
 });
 // Home Product
 Route::get('/home', [ProductController::class, 'index'])->name('home');
-// Register
-Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
-// Login
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware(['guest'])->group(function () {
+    // Register
+    Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register']);
+    // Login
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+});
 
 Route::middleware(['admin'])->group(function () {
     // Dashboard

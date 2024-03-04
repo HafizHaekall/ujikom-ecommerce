@@ -26,9 +26,9 @@ class AuthController extends Controller
             $user = Auth::user();
         
             if ($user->is_admin == true) {
-                return redirect()->intended('dashboard');
+                return redirect()->intended('dashboard')->with('success', 'Login Berhasil!');
             } else {
-                return redirect()->intended('home');
+                return redirect()->intended('home')->with('success', 'Login Berhasil!');
             }
         }        
 
@@ -52,6 +52,7 @@ class AuthController extends Controller
         if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('photos', 'public');
         }
+        $data['photo'] = $request->file('photo') ?? 'user/user.png';
 
         $data['password'] = Hash::make($data['password']);
 
@@ -59,12 +60,12 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/login');
+        return redirect()->route('login')->with('success', 'Daftar Berhasil!');
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('home');
+        return redirect('home')->with(['success' =>'Logout Berhasil']);
     }
 }
