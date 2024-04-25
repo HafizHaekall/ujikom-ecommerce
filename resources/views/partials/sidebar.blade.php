@@ -22,9 +22,14 @@
             </button>
         </div>
       </div>
+
+      @php
+          $routeName = request()->route()->getName();
+      @endphp
+
         <ul class="space-y-2">
             <li>
-                <a href="{{ route('dashboard') }}" class="{{ $active === 'dashboard' ? 'bg-white text-primary-20 group' : 'text-white' }} flex items-center p-2 py-auto text-base font-normal rounded-lg hover:bg-white hover:text-primary-20 group duration-[400ms]">
+                <a href="{{ route('dashboard') }}" class="{{ $routeName === 'dashboard' ? 'bg-white text-primary-20 group' : 'text-white' }} flex items-center p-2 py-auto text-base font-normal rounded-lg hover:bg-white hover:text-primary-20 group duration-[400ms]">
                   <i data-feather="grid" class="h-5 w-5"></i>
                   <span class="ml-3">Dashboard</span>
                 </a>
@@ -32,20 +37,20 @@
             <li>
                 <hr>
             <li>
-                <a href="{{ route('create_product') }}" class="{{ $active === 'product' ? 'bg-white text-primary-20 group' : 'text-white' }} flex items-center p-2 py-auto text-base font-normal rounded-lg hover:bg-white hover:text-primary-20 group duration-[400ms]">
+                <a href="{{ route('create_product') }}" class="{{ $routeName === 'create_product' ? 'bg-white text-primary-20 group' : 'text-white' }} flex items-center p-2 py-auto text-base font-normal rounded-lg hover:bg-white hover:text-primary-20 group duration-[400ms]">
                     <i data-feather="package" class="h-5 w-5"></i>
                     <span class="ml-3">Data Produk</span>
                 </a>
             </li>
             <li>
-                <a href="{{ route('index_order') }}" class="{{ $active === 'order' ? 'bg-white text-primary-20 group' : 'text-white' }} flex items-center p-2 py-auto text-base font-normal rounded-lg hover:bg-white hover:text-primary-20 group duration-[400ms]">
+                <a href="{{ route('index_order') }}" class="{{ $routeName === 'index_order' ? 'bg-white text-primary-20 group' : 'text-white' }} flex items-center p-2 py-auto text-base font-normal rounded-lg hover:bg-white hover:text-primary-20 group duration-[400ms]">
                     <i data-feather="shopping-cart" class="h-5 w-5"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap">Data Order</span>
                 </a>
             </li>
                 <hr>
             <li>
-                <a href="{{ route('profile.admin') }}" class="{{ $active === 'profile' ? 'bg-white text-primary-20 group' : 'text-white' }} flex items-center p-2 py-auto text-base font-normal rounded-lg hover:bg-white hover:text-primary-20 group duration-[400ms]">
+                <a href="{{ route('profile.admin') }}" class="{{ $routeName === 'profile.admin' ? 'bg-white text-primary-20 group' : 'text-white' }} flex items-center p-2 py-auto text-base font-normal rounded-lg hover:bg-white hover:text-primary-20 group duration-[400ms]">
                     <i data-feather="user" class="h-5 w-5"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap">Profile</span>
                 </a>

@@ -13,13 +13,15 @@
 
 <section class="bg-gray-50">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <a href="#" class="flex items-center mb-6 text-3xl font-bold text-primary-20">
+        <a href="{{ route('home') }}" class="flex items-center mb-6 text-3xl font-bold text-primary-20">
             <img class="h-10 mr-2" src="{{ asset('img/logo.png') }}" alt="logo">
             GRIDMERCE
         </a>
-        <div class="flex items-center gap-8">
-            <div>
-                <img src="{{ asset('img/register.png') }}" alt="" class="w-[45vw]">
+        <div class="lg:flex items-center gap-8">
+            <div class="mb-10">
+                <div class="flex justify-center">
+                    <img src="{{ asset('img/register.png') }}" alt="" class="w-[45vw]">
+                </div>
                 <h1 class="text-center text-xl font-semibold leading-tight tracking-tight text-gray-900 md:text-2xl">
                     Beli Barang Ori Hanya Di GRIDMERCE
                 </h1>

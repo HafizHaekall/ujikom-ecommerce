@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Redirect;
 
 class OrderController extends Controller
 {
+    // fungsi untuk menampilkan data atau riwayat order
     public function index_order()
     {
         $user = Auth::user();
         $is_admin = $user->is_admin;
     
+        // pengecekan role untuk hak akses
         if ($is_admin) {
             $orders = Order::all();
         } else {
@@ -29,6 +31,7 @@ class OrderController extends Controller
         ], compact('orders'));
     }
     
+    // fungsi untuk menampilkan detail order tertentu
     public function show_order(Order $order)
     {
         $user = Auth::user();
@@ -44,11 +47,13 @@ class OrderController extends Controller
         return view('order.show', compact('order'));
     }
 
+    // fungsi untuk melakukan checkout produk
     public function checkout()
     {
         $user_id = Auth::id();
         $carts = Cart::where('user_id', $user_id)->get();
 
+        // cek jika order kosong
         if ($carts->isEmpty()) {
             return Redirect::back()->with('error', 'Tidak ada item di keranjang.');
         }
@@ -71,10 +76,10 @@ class OrderController extends Controller
             ]);
             $cart->delete();
         }
-
         return Redirect::route('index_order')->with(['success' =>'Checkout berhasil!']);
     }
 
+    // fungsi untuk mengunggah bukti pembayaran atau submit payment
     public function submit_payment_receipt(Order $order, Request $request)
     {
         $request->validate([
@@ -93,6 +98,7 @@ class OrderController extends Controller
         return Redirect::back()->with(['success' =>'Berhasil diunggah']);
     }
 
+    // fungsi untuk mengkonfirmasi pesanan atau confirm payment
     public function confirm_payment(Order $order)
     {
         $order->update([
@@ -102,6 +108,7 @@ class OrderController extends Controller
         return Redirect::back()->with(['success' =>'Pesanan dikonfirmasi!']);
     }
 
+    // fungsi untuk nota transaksi
     public function nota(Order $order)
     {
         return view('order.nota', compact('order'));

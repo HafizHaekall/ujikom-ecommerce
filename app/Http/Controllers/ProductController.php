@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
+    // fungsi untuk menampilkan semua produk
     public function index()
     {
+        // fungsi untuk pencarian atau fitur search
         $products = [];
         if (request('query') && request('query') !== null) {
             $query = request('query');
@@ -19,23 +21,10 @@ class ProductController extends Controller
             $products = Product::all();
         }
 
-        if (Auth::check() && Auth::user()->is_admin) {
-            return view('home', compact('products'));
-        }
-
         return view('home', compact('products'));
     }
 
-    // public function product()
-    // {
-    //     if (Auth::check() && Auth::user()->is_admin) {
-    //         $products = Product::all();
-    //         return view('product', [
-    //             'active' => 'product',
-    //         ], compact('products'));
-    //     }
-    // }
-
+    // fungsi untuk membuat produk baru
     public function create()
     {
         $active = 'product';
@@ -44,7 +33,7 @@ class ProductController extends Controller
         return view('product.create', compact('active', 'products'));
     }
     
-
+    // fungsi untuk menjalankan pembuatan produk baru
     public function store(Request $request)
     {
         $request->validate([
@@ -68,11 +57,13 @@ class ProductController extends Controller
         return Redirect::route('create_product')->with(['success' =>'Produk ditambahkan!']);
     }
 
+    // fungsi untuk menampilkan semua produk (admin)
     public function show(Product $product)
     {
         return view('product.show', compact('product'));
     }
 
+    // fungsi untuk mengubah data produk
     public function edit(Product $product)
     {
         return view('product.edit', [
@@ -80,6 +71,7 @@ class ProductController extends Controller
         ], compact('product'));
     }
 
+    // fungsi untuk menjalankan perubahan data produk
     public function update(Product $product, Request $request)
     {
         $request->validate([
@@ -92,6 +84,7 @@ class ProductController extends Controller
 
         $file = $request->file('image');
 
+        // pengecekan foto produk
         if ($request->hasFile('image')) {
             $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
             Storage::disk('local')->put('public/' . $path, file_get_contents($file));
@@ -115,6 +108,7 @@ class ProductController extends Controller
         return Redirect::route('create_product', $product)->with(['success' =>'Produk berhasil diubah!']);
     }
 
+    // fungsi untuk menghapus produk
     public function delete_product(Product $product)
     {
         $product->delete();

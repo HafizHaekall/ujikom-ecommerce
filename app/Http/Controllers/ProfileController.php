@@ -13,11 +13,13 @@ use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
+    // fungsi untuk menampilkan edit profil
     public function edit()
     {
         return view('profile.edit');
     }
 
+    // fungsi untuk menampilkan edit profil (admin)
     public function admin()
     {
         return view('profile.admin', [
@@ -25,6 +27,7 @@ class ProfileController extends Controller
         ]);
     }
 
+    // fungsi untuk menjalankan perubahan profil0
     public function update(Request $request)
     {
         $user = Auth::user();
@@ -56,7 +59,7 @@ class ProfileController extends Controller
         $user->email = $request->email;
         $user->address = $request->address;
         
-        // Periksa apakah password baru disediakan
+        // Periksa apakah password baru diinputkan
         if ($request->filled('new_password')) {
             // Validasi password lama
             if (!Hash::check($request->current_password, $user->password)) {
